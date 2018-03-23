@@ -2,7 +2,7 @@
 
 The current setup assumes you're on Ubuntu 16.04 for your base station and your sensors are [Raspberry Pi Zero W's with the V2 camera module](https://www.adafruit.com/product/3415) and [9DoF IMU sensor](https://www.adafruit.com/product/2472).
 
-If you're a Mac user like me, and need to set up a dual boot into Linux, check out (this fantatic link)[https://www.youtube.com/watch?v=IQIaDO9nR6Y] which got me dual booting just fine with MacOS Sierra.  His (Bootable Drive Maker)[https://github.com/GregoryConrad/BootableDriveMaker] is a handy tool to get a boot on a flash drive.  Be careful with partitioning!
+If you're a Mac user like me, and need to set up a dual boot into Linux, check out [this fantatic link](https://www.youtube.com/watch?v=IQIaDO9nR6Y) which got me dual booting just fine with MacOS Sierra.  His [Bootable Drive Maker](https://github.com/GregoryConrad/BootableDriveMaker) is a handy tool to get a boot on a flash drive.  Be careful with partitioning!
 
 ## Sensor Installation
 
