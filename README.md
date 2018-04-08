@@ -23,3 +23,7 @@ To add a sensor to the network:
 
 1. Burn [latest Raspian release](https://www.raspberrypi.org/downloads/raspbian/) to your SD.  For this project I used Raspian Stretch.  I recommend [Etcher](https://etcher.io/).
 2. If using Etcher, reinsert the SD because it was auto-ejected.  Then run init-sensor.py in the sensor directory.
+
+## Datasets
+
+If you lack a suitable setup for collecting data yourself, you can use [ETH ASL's datasets](https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets) for testing and benchmarking.
