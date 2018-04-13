@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# Example execution:
+# python plot.py /home/raoul/vio-thesis/experiments/01_basic_experiment 1.0
+
+
 import os, sys, inspect
 import numpy as np
 import matplotlib.pyplot as plt
