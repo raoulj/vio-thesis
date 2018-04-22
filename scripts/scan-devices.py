@@ -1,3 +1,4 @@
+
 import os
 import json
 from pathlib import Path
@@ -14,8 +15,8 @@ env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
 sensor_count = int(os.getenv('NUMBER_SENSORS'))
-pi_username = os.getenv('PI_USERNAME')
-pi_password = os.getenv('PI_PASSWORD')
+# pi_username = os.getenv('PI_USERNAME')
+# pi_password = os.getenv('PI_PASSWORD')
 computer_ip = socket.gethostbyname(socket.gethostname())
 server_port = int(os.getenv('SERVER_PORT'))
 
@@ -31,8 +32,8 @@ os.system('rm -rf tmp')
 terminals = list(filter(lambda x: len(x['ip']) != 0, data['terminals']))
 
 # Make sure all the connected devices are on the network
-if len(data['terminals']) != sensor_count + 1:
-	raise Exception(f"Detected {len(terminals) - 1} of {sensor_count} sensor(s).")
+#if len(data['terminals']) != sensor_count + 1:
+#	raise Exception(f"Detected {len(terminals) - 1} of {sensor_count} sensor(s).")
 
 # We have the requisite number of devices, get the ips for the sensors
 sensor_ips = list(filter(lambda x: x!= computer_ip, map(lambda x: x['ip'], terminals)))
