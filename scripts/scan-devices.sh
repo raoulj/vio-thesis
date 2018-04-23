@@ -11,6 +11,7 @@ content=$(curl -s -X POST 'http://192.168.0.1/protocol.csp?fname=system&opt=main
 # Parse the JSON, make an array out of it.
 data=($(jq '.terminals[].ip' <<< "${content}"))
 
+# Only print the ip if it's not the host computer or an empty string
 for i in "${data[@]}"
 do
     temp="${i%\"}"
