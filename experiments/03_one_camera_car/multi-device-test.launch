@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+    <machine 
+        name="dev2" 
+        address="192.168.0.120" 
+        user="pi"
+        password="raspberry" 
+        default="never" 
+        env-loader="/home/pi/catkin_ws/devel/env.sh"
+    />
+    <machine 
+        name="dev1" 
+        address="192.168.0.240" 
+        user="pi"
+        password="raspberry" 
+        default="never" 
+        env-loader="/home/pi/catkin_ws/devel/env.sh"
+    />
+
+        
+    <node pkg="beginner_tutorials" type="talker.py" name="this_node" machine="dev1"/>
+    <node pkg="beginner_tutorials" type="talker.py" name="that_node" machine="dev2"/>
+    <node pkg="beginner_tutorials" type="listener.py" name="home" />
+</launch>
