@@ -8,6 +8,27 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import rospy
 from nav_msgs.msg import Odometry
+from trajectory_toolkit.VIEvaluator import VIEvaluator
+from trajectory_toolkit import Quaternion
+from trajectory_toolkit import Utils
+from trajectory_toolkit import RosDataAcquisition
+
+
+def processOdomData(dat):
+    td_visual = TimedData()
+    eval = VIEvaluator()
+    eval.bag = bag_file_name
+    eval.odomTopic = odometry_topic_name
+    eval.alignMode = 0 
+    eval.derMode = 0
+    eval.initTimedData(td_visual)
+    eval.acquireData()
+    eval.getAllDerivatives()
+    eval.alignTime()
+    eval.alignBodyFrame()
+    eval.alignInertialFrame()
+    eval.getYpr()
+    eval.evaluateSigmaBounds()
 
 def plotData(msg):
     global ax

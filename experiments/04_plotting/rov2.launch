@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+  <node pkg="rovio_car"
+        type="plot-rovio.py"
+        name="plot2"
+        output="screen"
+        required="true"
+  />
+</launch>

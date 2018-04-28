@@ -1,4 +1,4 @@
-echo -n "The pi ip you want to identity: 192.168.0."
+echo -n "The pi zero ip you want to identity: 192.168.0."
 read ip
 
 sshpass -p 'raspberry' ssh -T pi@192.168.0.$ip << EOF > /dev/null
