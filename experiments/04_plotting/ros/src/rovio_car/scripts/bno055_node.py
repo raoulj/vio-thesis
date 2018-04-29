@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 from Adafruit_BNO055.BNO055 import BNO055
 import logging
-
+import rospy
+import math
 from time import time
 from sensor_msgs.msg import Imu
 
@@ -10,7 +11,7 @@ if __name__ == '__main__':
     # ROS Setup
     rospy.init_node('bno055_imu_node')
 
-    rospy.Publisher('imu', Imu, queue_size = 10)
+    pub = rospy.Publisher('imu', Imu, queue_size = 10)
 
     # BNO Setup
 
@@ -20,10 +21,10 @@ if __name__ == '__main__':
     if not bno.begin():
         raise RuntimeError('The BNO055 is not connected')
 
-    with bno.get_system_status() as status, self_test, error:
-        if status == 0x01:
-            print('System error: {0}'.format(error))
-            print('Datasheet 4.3.59 will clarify the error code.')
+    status, self_test, error = bno.get_system_status()
+    if status == 0x01:
+        print('System error: {0}'.format(error))
+        print('Datasheet 4.3.59 will clarify the error code.')
 
     # Read from the device
     seq = 0
@@ -36,9 +37,9 @@ if __name__ == '__main__':
         # Note that it is not guarenteed that all of these measurements
         # will be from the same buffer.ros
         if True:
-            orient_x, orient_y, orient_z, orient_w = bno.read_quaterion()
+            orient_x, orient_y, orient_z, orient_w = bno.read_quaternion()
             acc_x, acc_y, acc_z = bno.read_linear_acceleration()
-            ang_vel_x, ang_vel_y, ang_vel_z = bno.read
+            ang_vel_x, ang_vel_y, ang_vel_z = bno.read_gyroscope()
 
             data.header.stamp = rospy.Time.now()
             data.header.frame_id = 'imu_link'
@@ -59,7 +60,7 @@ if __name__ == '__main__':
             data.angular_velocity.y = math.radians(ang_vel_y)
             data.angular_velocity.z = math.radians(ang_vel_z)
             data.angular_velocity_covariance[0] = -1
-            pub_data.publish(data)
+            pub.publish(data)
 
             # Work for next loop
             seq += 1
