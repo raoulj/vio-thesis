@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from Adafruit_BNO055.BNO055 import BNO055
 import logging
 
