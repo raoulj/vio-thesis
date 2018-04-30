@@ -39,7 +39,7 @@ if __name__ == '__main__':
             acc_x, acc_y, acc_z = bno.read_linear_acceleration()
             ang_vel_x, ang_vel_y, ang_vel_z = bno.read_gyroscope()
 
-            data.header.stamp = rospy.Time.now()
+            data.header.stamp = time.time()
             data.header.frame_id = 'imu_link'
             data.header.seq = seq
 
