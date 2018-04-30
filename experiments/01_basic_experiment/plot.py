@@ -52,5 +52,5 @@ td_visual, td_vicon = load_one_comparison(os.path.join(experiment_path, 'results
 plotterPos.addDataToSubplot(td_visual, 1, 1, '', 'Rovio')
 plotterPos.addDataToSubplot(td_vicon, 1, 1, '', 'Truth')
 
-input()
+raw_input('Press enter to exit')
 

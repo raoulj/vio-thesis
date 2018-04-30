@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+
+    <machine 
+        name="dev1" 
+        address="192.168.0.120" 
+        user="pi"
+        password="raspberry" 
+        default="never" 
+        env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
+    />
+    <machine 
+        name="dev2" 
+        address="192.168.0.173" 
+        user="pi"
+        password="raspberry" 
+        default="never" 
+        env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
+    />
+
+    <!-- <node type="raspicam_node" pkg="raspicam_node" name="raspicam_node" output="screen" machine="dev2">
+      <param name="camera_info_url" value="package://raspicam_node/camera_info/camerav2_410x308.yaml"/>
+      <param name="width" value="1280"/>
+      <param name="height" value="960"/>
+      <param name="framerate" value="30"/>
+      <param name="camera_frame_id" value="raspicam"/>
+    </node> -->
+    
+    <node pkg="rovio_car" type="bno055_node.py" name="imu_node" machine="dev1">
+        <param name="use_sim_time" value="false" />
+    </node>
+
+    <!-- <node 
+        pkg="image_transport" 
+        name="raw_img_converter" 
+        type="republish" 
+        args="compressed in:=/raspicam_node/image raw out:=/colored_cam0" 
+        output="screen"
+    />
+
+    <node 
+        pkg="rovio_car"
+        type="image_color_converter.py"
+        name="image_reencoder"
+        output="screen"
+    />
+
+    <node pkg="rovio" type="rovio_node" name="rovio" output="screen" required="true">
+        <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
+        <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camerav2_410x308.yaml"/>
+        <param name="r_ext" value="false" />
+        <param name="r_bias" value="false" />
+        <param name="r_pcl" value="false" />
+    </node>
+
+    <node pkg="rovio_car"
+        type="plottrajectory.py"
+        name="plotter"
+        output="screen"
+        required="true"
+    /> -->
+</launch>

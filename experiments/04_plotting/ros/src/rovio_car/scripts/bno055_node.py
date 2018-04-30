@@ -10,8 +10,7 @@ from sensor_msgs.msg import Imu
 if __name__ == '__main__':
     # ROS Setup
     rospy.init_node('bno055_imu_node')
-
-    pub = rospy.Publisher('imu', Imu, queue_size = 10)
+    pub = rospy.Publisher('imu0', Imu, queue_size = 100)
 
     # BNO Setup
 
@@ -24,7 +23,6 @@ if __name__ == '__main__':
     status, self_test, error = bno.get_system_status()
     if status == 0x01:
         print('System error: {0}'.format(error))
-        print('Datasheet 4.3.59 will clarify the error code.')
 
     # Read from the device
     seq = 0
@@ -60,6 +58,7 @@ if __name__ == '__main__':
             data.angular_velocity.y = math.radians(ang_vel_y)
             data.angular_velocity.z = math.radians(ang_vel_z)
             data.angular_velocity_covariance[0] = -1
+            
             pub.publish(data)
 
             # Work for next loop
