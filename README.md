@@ -1,4 +1,4 @@
-This is am evaluation of [ROVIO](https://github.com/ethz-asl/rovio) using multiple cameras, in multiple configurations, using multiple computational allocations.
+This is an evaluation of [ROVIO](https://github.com/ethz-asl/rovio) using multiple cameras, in multiple configurations, using multiple computational allocations.
 
 ## Requirements
 
