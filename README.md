@@ -1,3 +1,5 @@
+This is am evaluation of [ROVIO](https://github.com/ethz-asl/rovio) using multiple cameras, in multiple configurations, using multiple computational allocations.
+
 ## Requirements
 
 The current setup assumes you're on Ubuntu 14.04 for your base station and your sensors are [Raspberry Pi Zero W's with the V2 camera module](https://www.adafruit.com/product/3415) and [9DoF IMU sensor](https://www.adafruit.com/product/2472).
