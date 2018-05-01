@@ -44,18 +44,18 @@
         <param name="to_topic" value="/cam0/image_raw" />
     </node>
 
-        <node pkg="rovio" type="rovio_node" name="rovio" output="screen" required="true">
-            <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
-            <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camerav2_410x308.yaml"/>
-            <param name="r_ext" value="false" />
-            <param name="r_bias" value="false" />
-            <param name="r_pcl" value="false" />
-        </node>
+    <node pkg="rovio" type="rovio_node" name="rovio" output="screen" required="true">
+        <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
+        <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camerav2_410x308.yaml"/>
+        <param name="r_ext" value="false" />
+        <param name="r_bias" value="false" />
+        <param name="r_pcl" value="false" />
+    </node>
 
-        <node pkg="rovio_car"
-            type="plottrajectory.py"
-            name="plotter"
-            output="screen"
-            required="true"
-        />
+    <node pkg="rovio_car"
+        type="plottrajectory.py"
+        name="plotter"
+        output="screen"
+        required="true"
+    />
 </launch>

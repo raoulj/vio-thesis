@@ -9,8 +9,8 @@ import copy
 
 class image_converter:
     def __init__(self, source, drain):
-        self.pub = rospy.Publisher(source, Image, queue_size = 10)
-        self.sub = rospy.Subscriber(drain, Image, self.convert_image)
+        self.sub = rospy.Subscriber(source, Image, self.convert_image)
+        self.pub = rospy.Publisher(drain, Image, queue_size = 10)
 
         self.bridge = CvBridge()
 
