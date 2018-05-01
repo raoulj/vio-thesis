@@ -2,7 +2,7 @@
 <launch>
 
     <machine 
-        name="dev1" 
+        name="imu_pi" 
         address="192.168.0.120" 
         user="pi"
         password="raspberry" 
@@ -10,7 +10,7 @@
         env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
     />
     <machine 
-        name="dev2" 
+        name="cam_pi" 
         address="192.168.0.173" 
         user="pi"
         password="raspberry" 
@@ -18,15 +18,16 @@
         env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
     />
 
-    <node type="raspicam_node" pkg="raspicam_node" name="raspicam_node" output="screen" machine="dev2">
+    <node type="raspicam_node" pkg="raspicam_node" name="raspicam_node" output="screen" machine="cam_pi">
       <param name="camera_info_url" value="package://raspicam_node/camera_info/camerav2_410x308.yaml"/>
       <param name="width" value="410"/>
       <param name="height" value="308"/>
       <param name="framerate" value="30"/>
       <param name="camera_frame_id" value="raspicam"/>
+      <param name="use_sim_time" value="false" />
     </node>
     
-    <node pkg="rovio_car" type="bno055_node.py" name="imu_node" machine="dev1">
+    <node pkg="rovio_car" type="bno055_node.py" name="imu_node" machine="imu_pi">
         <param name="use_sim_time" value="false" />
     </node>
 
@@ -38,25 +39,23 @@
         output="screen"
     />
 
-    <node 
-        pkg="rovio_car"
-        type="image_color_converter.py"
-        name="image_reencoder"
-        output="screen"
-    />
-
-    <node pkg="rovio" type="rovio_node" name="rovio" output="screen" required="true">
-        <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
-        <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camerav2_410x308.yaml"/>
-        <param name="r_ext" value="false" />
-        <param name="r_bias" value="false" />
-        <param name="r_pcl" value="false" />
+    <node pkg="rovio_car" type="image_color_converter.py" name="image_reencoder" output="screen">
+        <param name="from_topic" value="/colored_cam0" />
+        <param name="to_topic" value="/cam0/image_raw" />
     </node>
 
-    <node pkg="rovio_car"
-        type="plottrajectory.py"
-        name="plotter"
-        output="screen"
-        required="true"
-    />
+        <node pkg="rovio" type="rovio_node" name="rovio" output="screen" required="true">
+            <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
+            <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camerav2_410x308.yaml"/>
+            <param name="r_ext" value="false" />
+            <param name="r_bias" value="false" />
+            <param name="r_pcl" value="false" />
+        </node>
+
+        <node pkg="rovio_car"
+            type="plottrajectory.py"
+            name="plotter"
+            output="screen"
+            required="true"
+        />
 </launch>

@@ -42,7 +42,13 @@ if __name__ == '__main__':
     rospy.Subscriber("rovio/odometry", Odometry, plotData)
 
     fig = plt.figure()
+
     ax = fig.add_subplot(111, projection='3d')
+
+    ax.set_xlabel('x [m]')
+    ax.set_ylabel('y [m]')
+    ax.set_zlabel('z [m]')
+    
     plt.ion()
     plt.show(block=True)
     #rospy.spin()
