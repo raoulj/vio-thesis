@@ -1,6 +1,6 @@
 ## Requirements
 
-The current setup assumes you're on Ubuntu 16.04 for your base station and your sensors are [Raspberry Pi Zero W's with the V2 camera module](https://www.adafruit.com/product/3415) and [9DoF IMU sensor](https://www.adafruit.com/product/2472).
+The current setup assumes you're on Ubuntu 14.04 for your base station and your sensors are [Raspberry Pi Zero W's with the V2 camera module](https://www.adafruit.com/product/3415) and [9DoF IMU sensor](https://www.adafruit.com/product/2472).
 
 ## Base Station Setup
 
