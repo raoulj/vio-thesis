@@ -14,7 +14,7 @@ I recommend first trying a VirtualBox VM before doing Dual Boot.  Unfortunately,
 I absolutely recommend using vagrant to set up your VM.  Use the included Vagrantfile.
 
 ### Dual Booting
-If you need to set up a dual boot into Linux, check out [this good tutorial](https://www.youtube.com/watch?v=IQIaDO9nR6Y) which got me booting just fine into Ubuntu with MacOS Sierra.  The tutorial-maker's [Bootable Drive Maker](https://github.com/GregoryConrad/BootableDriveMaker) is a handy tool to get a boot on a flash drive. As always, be careful with partitioning!
+If you need to set up a dual boot into Linux, check out [this good tutorial](https://www.youtube.com/watch?v=IQIaDO9nR6Y) which got me booting just fine into Ubuntu with MacOS Sierra.  The tutorial-maker's [Bootable Drive Maker](https://github.com/GregoryConrad/BootableDriveMaker) is a handy tool to get a boot on a flash drive. As someone who didn't follow the instructions well and had to make a visit to the Apple Store: **make sure to back up your computer**.
 
 
 ## Sensor Setup
