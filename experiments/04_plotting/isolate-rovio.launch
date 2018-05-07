@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+
+    <node pkg="rosbag"
+        type="play"
+        name="bag"
+        args="-r 2.0 --clock /home/raoul/vio-thesis/experiments/04_plotting/bagfiles/2018-05-01-11-53-34.bag"
+        required="true">
+    </node>
+
+    <node pkg="rovio" type="rovio_node" name="rovio" output="screen" required="true">
+        <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
+        <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camera_info/ost.yaml"/>
+        <param name="r_ext" value="false" />
+        <param name="r_bias" value="false" />
+        <param name="r_pcl" value="false" />
+    </node> 
+    <node   pkg="rosbag"
+            type="record"
+            name="bag_record"
+            args="-O /home/raoul/vio-thesis/datasets/eval.bag
+                /rovio/odometry"
+            output="screen"
+        required="true"
+    >
+    </node>
+</launch>

@@ -28,7 +28,7 @@ if __name__ == '__main__':
     seq = 0
     data = Imu()
 
-    rate = rospy.Rate(100)
+    rate = rospy.Rate(250)
 
     while not rospy.is_shutdown():
         # Include if condition if there is a new reading from the device

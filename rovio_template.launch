@@ -16,7 +16,7 @@
   <node pkg="rosbag"
         type="play"
         name="bag"
-        args="-r $(arg PROCESS_RATE) --clock $(arg PROJECT_HOME)/datasets/V1_01_easy.bag"
+        args="-r $(arg PROCESS_RATE) --clock $(arg PROJECT_HOME)/datasets/downsampled.bag"
         required="$(arg stop_at_bag_end)">
   </node>
 

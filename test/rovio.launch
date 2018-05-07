@@ -16,14 +16,14 @@
   <node pkg="rosbag"
         type="play"
         name="bag"
-        args="-r $(arg PROCESS_RATE) --clock $(arg PROJECT_HOME)/datasets/V1_01_easy.bag"
+        args="-r 1.0 --clock $(arg PROJECT_HOME)/datasets/V1_01_easy.bag"
         required="$(arg stop_at_bag_end)">
   </node>
 
   <node pkg="rosbag"
         type="record"
         name="bag_record"
-        args="-O $(arg EXPERIMENT_HOME)/results/rovio_traj_$(arg PROCESS_RATE).bag
+        args="-O $(arg EXPERIMENT_HOME)/results/rovio_traj.bag
               /vicon/firefly_sbx/firefly_sbx
               /rovio/odometry"
         output="screen"

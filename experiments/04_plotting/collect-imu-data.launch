@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+
+    <machine 
+        name="imu_pi" 
+        address="192.168.0.120" 
+        user="pi"
+        password="raspberry" 
+        default="never" 
+        env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
+    />
+    
+    <node pkg="rovio_car" type="bno055_node.py" name="imu_node" machine="imu_pi" required="true">
+        <param name="use_sim_time" value="false" />
+    </node>
+
+    <node pkg="rosbag"
+        type="record"
+        name="bag_record"
+        args="-O /home/raoul/vio-thesis/calibration/imu_data.bag /imu0"
+        output="screen"
+      required="true"/>
+</launch>

@@ -11,8 +11,8 @@ echo "======================="
 echo " Pull in launch script"
 echo "======================="
 cd $PROJECT_HOME/test
-rm rovio.launch
-cp $PROJECT_HOME/rovio_template.launch ./rovio.launch
+#rm rovio.launch
+#cp $PROJECT_HOME/rovio_template.launch ./rovio.launch
 
 echo "===================="
 echo " Running experiment"

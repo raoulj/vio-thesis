@@ -10,43 +10,73 @@
         env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
     />
     <machine 
-        name="cam_pi" 
+        name="cam_pi0" 
         address="192.168.0.173" 
         user="pi"
         password="raspberry" 
         default="never" 
         env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
     />
+    <machine 
+        name="cam_pi1" 
+        address="192.168.0.99" 
+        user="pi"
+        password="raspberry" 
+        default="never" 
+        env-loader="/home/pi/vio-thesis/experiments/04_plotting/ros/devel/env.sh"
+    />
 
-    <node type="raspicam_node" pkg="raspicam_node" name="raspicam_node" output="screen" machine="cam_pi">
-      <param name="camera_info_url" value="package://raspicam_node/camera_info/camerav2_410x308.yaml"/>
-      <param name="width" value="410"/>
-      <param name="height" value="308"/>
+    <node type="raspicam_node" pkg="raspicam_node" name="raspicam_node0" output="screen" machine="cam_pi0">
+      <param name="camera_info_url" value="package://raspicam_node/camera_info/camerav2_1280x720.yaml"/>
+      <param name="width" value="1280"/>
+      <param name="height" value="720"/>
       <param name="framerate" value="30"/>
       <param name="camera_frame_id" value="raspicam"/>
       <param name="use_sim_time" value="false" />
     </node>
-    
+
+    <node type="raspicam_node" pkg="raspicam_node" name="raspicam_node1" output="screen" machine="cam_pi1">
+      <param name="camera_info_url" value="package://raspicam_node/camera_info/camerav2_1280x720.yaml"/>
+      <param name="width" value="1280"/>
+      <param name="height" value="720"/>
+      <param name="framerate" value="30"/>
+      <param name="camera_frame_id" value="raspicam"/>
+      <param name="use_sim_time" value="false" />
+    </node>
+
     <node pkg="rovio_car" type="bno055_node.py" name="imu_node" machine="imu_pi">
         <param name="use_sim_time" value="false" />
     </node>
 
     <node 
         pkg="image_transport" 
-        name="raw_img_converter" 
+        name="raw_img_converter0" 
         type="republish" 
-        args="compressed in:=/raspicam_node/image raw out:=/colored_cam0" 
+        args="compressed in:=/raspicam_node0/image raw out:=/colored_cam0" 
         output="screen"
     />
 
-    <node pkg="rovio_car" type="image_color_converter.py" name="image_reencoder" output="screen">
+    <node 
+        pkg="image_transport" 
+        name="raw_img_converter1" 
+        type="republish" 
+        args="compressed in:=/raspicam_node1/image raw out:=/colored_cam1" 
+        output="screen"
+    />
+
+    <node pkg="rovio_car" type="image_color_converter.py" name="image_reencoder0" output="screen">
         <param name="from_topic" value="/colored_cam0" />
         <param name="to_topic" value="/cam0/image_raw" />
     </node>
 
+    <node pkg="rovio_car" type="image_color_converter.py" name="image_reencoder1" output="screen">
+        <param name="from_topic" value="/colored_cam1" />
+        <param name="to_topic" value="/cam1/image_raw" />
+    </node>
     <node pkg="rovio" type="rovio_node" name="rovio" output="screen" required="true">
         <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
-        <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camerav2_410x308.yaml"/>
+        <param name="camera0_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camera_info/ost.yaml"/>
+        <param name="camera1_config" value="/home/raoul/vio-thesis/experiments/04_plotting/camera_info/ost.yaml"/>
         <param name="r_ext" value="false" />
         <param name="r_bias" value="false" />
         <param name="r_pcl" value="false" />
