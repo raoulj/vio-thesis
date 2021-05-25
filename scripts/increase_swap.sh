@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Future edit: Detect if OS Debian vs Ubuntu (Pi vs base)
+
 # size of swapfile in megabytes
 swapsize=4000
 

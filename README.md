@@ -1,6 +1,8 @@
+This is an evaluation of [ROVIO](https://github.com/ethz-asl/rovio) using multiple cameras, in multiple configurations, using multiple computational allocations.
+
 ## Requirements
 
-The current setup assumes you're on Ubuntu 16.04 for your base station and your sensors are [Raspberry Pi Zero W's with the V2 camera module](https://www.adafruit.com/product/3415) and [9DoF IMU sensor](https://www.adafruit.com/product/2472).
+The current setup assumes you're on Ubuntu 14.04 for your base station and your sensors are [Raspberry Pi Zero W's with the V2 camera module](https://www.adafruit.com/product/3415) and [9DoF IMU sensor](https://www.adafruit.com/product/2472).
 
 ## Base Station Setup
 
@@ -14,7 +16,7 @@ I recommend first trying a VirtualBox VM before doing Dual Boot.  Unfortunately,
 I absolutely recommend using vagrant to set up your VM.  Use the included Vagrantfile.
 
 ### Dual Booting
-If you need to set up a dual boot into Linux, check out [this good tutorial](https://www.youtube.com/watch?v=IQIaDO9nR6Y) which got me booting just fine into Ubuntu with MacOS Sierra.  The tutorial-maker's [Bootable Drive Maker](https://github.com/GregoryConrad/BootableDriveMaker) is a handy tool to get a boot on a flash drive. As always, be careful with partitioning!
+If you need to set up a dual boot into Linux, check out [this good tutorial](https://www.youtube.com/watch?v=IQIaDO9nR6Y) which got me booting just fine into Ubuntu with MacOS Sierra.  The tutorial-maker's [Bootable Drive Maker](https://github.com/GregoryConrad/BootableDriveMaker) is a handy tool to get a boot on a flash drive. As someone who didn't follow the instructions well and had to make a visit to the Apple Store: **make sure to back up your computer**.
 
 
 ## Sensor Setup

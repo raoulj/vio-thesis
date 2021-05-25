@@ -52,20 +52,5 @@ td_visual, td_vicon = load_one_comparison(os.path.join(experiment_path, 'results
 plotterPos.addDataToSubplot(td_visual, 1, 1, '', 'Rovio')
 plotterPos.addDataToSubplot(td_vicon, 1, 1, '', 'Truth')
 
-# # store data
-# import pickle
-# f1 = open('td_visual.pckl', 'wb')
-# f2 = open('td_vicon.pckl', 'wb')
-# pickle.dump(td_visual, f1)
-# pickle.dump(td_vicon, f2)
-# f1.close()
-# f2.close()
+raw_input('Press enter to exit')
 
-input()
-
-# # copy and paste to get vars in repl
-# import pickle
-# f1 = open('td_visual.pckl', 'rb')
-# f2 = open('td_vicon.pckl', 'rb')
-# td_visual = pickle.load(f1)
-# td_vicon = pickle.load(f2)
